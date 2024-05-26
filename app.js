@@ -23,6 +23,11 @@ app.use('/api/watchlist', watchlistRouter)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-mongoose.connect(process.env.URL_DB)
+try {
+    mongoose.connect(process.env.URL_DB)
+    console.log('DB has been conected')
+} catch (error) {
+    console.log(error)
+}
 
 module.exports = app;
